@@ -1,0 +1,280 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    /* Saffron — brand primary */
+    --color-saffron-50:  #fff8f3;
+    --color-saffron-100: #ffe8d4;
+    --color-saffron-200: #ffcba4;
+    --color-saffron-300: #ffa568;
+    --color-saffron-400: #ff8040;
+    --color-saffron-500: #ff6b35;
+    --color-saffron-600: #e84f1a;
+    --color-saffron-700: #c23c12;
+    --color-saffron-800: #9d2e11;
+    --color-saffron-900: #7e2514;
+
+    /* Crimson — secondary accent */
+    --color-crimson-50:  #fdf2f4;
+    --color-crimson-100: #fce4e8;
+    --color-crimson-200: #f9bec8;
+    --color-crimson-300: #f588a0;
+    --color-crimson-400: #ed4c6a;
+    --color-crimson-500: #c41e3a;
+    --color-crimson-600: #a31931;
+    --color-crimson-700: #871429;
+    --color-crimson-800: #6c1122;
+    --color-crimson-900: #4e0d1a;
+
+    /* Gold — highlights */
+    --color-gold-50:  #fffdf0;
+    --color-gold-100: #fff8d0;
+    --color-gold-200: #ffed90;
+    --color-gold-300: #ffd94a;
+    --color-gold-400: #ffc220;
+    --color-gold-500: #f5a623;
+    --color-gold-600: #d4850e;
+    --color-gold-700: #b06509;
+    --color-gold-800: #8d4d0e;
+    --color-gold-900: #703d12;
+
+    --font-sans:    'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Playfair Display', ui-serif, Georgia, serif;
+}
+
+/* ── Base ─────────────────────────────────── */
+html { scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ── Keyframes ────────────────────────────── */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-18px); }
+}
+@keyframes float2 {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%       { transform: translateY(-12px) rotate(3deg); }
+}
+@keyframes spin-slow {
+    to { transform: rotate(360deg); }
+}
+@keyframes spin-slow-rev {
+    to { transform: rotate(-360deg); }
+}
+@keyframes gradient-pan {
+    0%, 100% { background-position: 0% 50%; }
+    50%       { background-position: 100% 50%; }
+}
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-in-left {
+    from { opacity: 0; transform: translateX(-60px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(60px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse-ring {
+    0%       { transform: scale(1); opacity: 0.8; }
+    80%, 100%{ transform: scale(2.2); opacity: 0; }
+}
+@keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position:  200% center; }
+}
+@keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+}
+
+/* ── Utility classes ──────────────────────── */
+.animate-float        { animation: float 6s ease-in-out infinite; }
+.animate-float2       { animation: float2 8s ease-in-out infinite; }
+.animate-spin-slow    { animation: spin-slow 25s linear infinite; }
+.animate-spin-slow-rev{ animation: spin-slow-rev 20s linear infinite; }
+.animate-gradient     { background-size: 300% 300%; animation: gradient-pan 6s ease infinite; }
+.animate-fade-up      { animation: fade-in-up 0.9s ease both; }
+.animate-slide-left   { animation: slide-in-left 0.9s ease both; }
+.animate-slide-right  { animation: slide-in-right 0.9s ease both; }
+.animate-bounce-slow  { animation: bounce-slow 2s ease-in-out infinite; }
+
+/* Scroll reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-right {
+    opacity: 0;
+    transform: translateX(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible,
+.reveal-left.visible,
+.reveal-right.visible {
+    opacity: 1;
+    transform: translate(0);
+}
+
+.delay-100 { transition-delay: 0.10s; }
+.delay-200 { transition-delay: 0.20s; }
+.delay-300 { transition-delay: 0.30s; }
+.delay-400 { transition-delay: 0.40s; }
+.delay-500 { transition-delay: 0.50s; }
+.delay-600 { transition-delay: 0.60s; }
+.delay-700 { transition-delay: 0.70s; }
+
+/* ── Gradient text ────────────────────────── */
+.gradient-text {
+    background: linear-gradient(135deg, #ff6b35 0%, #c41e3a 50%, #f5a623 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.gradient-text-gold {
+    background: linear-gradient(135deg, #f5a623 0%, #ffd94a 50%, #f5a623 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Glassmorphism ────────────────────────── */
+.glass {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+}
+.glass-dark {
+    background: rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ── Navigation ───────────────────────────── */
+#main-nav {
+    background: transparent;
+    transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.3s ease;
+}
+#main-nav.nav-scrolled {
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.08);
+}
+#main-nav.nav-scrolled .nav-link  { color: #374151; }
+#main-nav.nav-scrolled .nav-link:hover { color: #ff6b35; }
+#main-nav.nav-scrolled .nav-logo-text { color: #111827; }
+#main-nav.nav-scrolled #menu-toggle { color: #374151; }
+
+/* ── Category card hover ──────────────────── */
+.category-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Feature list item ────────────────────── */
+.feature-item {
+    transition: transform 0.25s ease;
+}
+.feature-item:hover {
+    transform: translateX(6px);
+}
+
+/* ── Download button pulse ────────────────── */
+.btn-download {
+    position: relative;
+}
+.btn-download::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: inherit;
+    animation: pulse-ring 2.5s ease-out infinite;
+    z-index: -1;
+}
+
+/* ── Shimmer on CTA ───────────────────────── */
+.btn-shimmer {
+    background: linear-gradient(90deg, #ff6b35 0%, #e84f1a 40%, #ff8040 60%, #ff6b35 100%);
+    background-size: 200% auto;
+    animation: shimmer 3s linear infinite;
+}
+
+/* ── Section wave dividers ────────────────── */
+.wave-bottom svg { display: block; }
+
+/* ── Phone mockup ─────────────────────────── */
+.phone-frame {
+    width: 260px;
+    height: 520px;
+    border-radius: 2.5rem;
+    background: linear-gradient(145deg, #1e1e2e, #2d2d44);
+    border: 3px solid rgba(255, 255, 255, 0.25);
+    overflow: hidden;
+    position: relative;
+    box-shadow:
+        0 40px 80px rgba(0,0,0,0.4),
+        0 0 0 1px rgba(255,255,255,0.05) inset;
+}
+.phone-notch {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 22px;
+    background: #1e1e2e;
+    border-radius: 0 0 16px 16px;
+    z-index: 10;
+}
+.phone-btn-power {
+    position: absolute;
+    right: -3px;
+    top: 35%;
+    width: 3px;
+    height: 32px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px 0 0 2px;
+}
+.phone-btn-vol {
+    position: absolute;
+    left: -3px;
+    width: 3px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 0 2px 2px 0;
+}
+
+/* ── Testimonial card ─────────────────────── */
+.testimonial-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonial-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 50px rgba(0,0,0,0.1);
+}
+
+/* ── Stat counter ─────────────────────────── */
+.stat-card {
+    transition: transform 0.3s ease;
+}
+.stat-card:hover {
+    transform: scale(1.04);
+}
