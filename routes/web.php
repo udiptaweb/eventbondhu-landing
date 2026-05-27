@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\ContentPageController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\ServicePageController;
 use Illuminate\Support\Facades\Route;
 
 // ── Public landing page ──────────────────────────────────
@@ -15,6 +16,9 @@ Route::post('/track/click', [AnalyticsController::class, 'trackClick'])->name('t
 Route::get('/{page}', [ContentPageController::class, 'show'])
     ->where('page', 'terms-conditions|privacy-policy|about|contact-support')
     ->name('content.page');
+
+// ── Individual service pages (SEO) ───────────────────────
+Route::get('/services/{key}', [ServicePageController::class, 'show'])->name('service.page');
 
 // ── Admin panel ──────────────────────────────────────────
 Route::prefix('admin')->name('admin.')->group(function () {

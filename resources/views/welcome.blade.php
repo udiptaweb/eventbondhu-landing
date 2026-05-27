@@ -330,6 +330,24 @@
 <section id="categories" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+        @php
+            $palette = [
+                ['bg' => 'bg-orange-50  border-orange-200', 'text' => 'text-orange-600',  'avatar' => 'from-orange-400 to-orange-600'],
+                ['bg' => 'bg-red-50     border-red-200',    'text' => 'text-red-600',      'avatar' => 'from-red-400    to-red-600'],
+                ['bg' => 'bg-pink-50    border-pink-200',   'text' => 'text-pink-600',     'avatar' => 'from-pink-400   to-pink-600'],
+                ['bg' => 'bg-purple-50  border-purple-200', 'text' => 'text-purple-600',   'avatar' => 'from-purple-400 to-purple-600'],
+                ['bg' => 'bg-amber-50   border-amber-200',  'text' => 'text-amber-700',    'avatar' => 'from-amber-400  to-amber-600'],
+                ['bg' => 'bg-green-50   border-green-200',  'text' => 'text-green-700',    'avatar' => 'from-green-400  to-green-600'],
+                ['bg' => 'bg-blue-50    border-blue-200',   'text' => 'text-blue-700',     'avatar' => 'from-blue-400   to-blue-600'],
+                ['bg' => 'bg-indigo-50  border-indigo-200', 'text' => 'text-indigo-700',   'avatar' => 'from-indigo-400 to-indigo-600'],
+                ['bg' => 'bg-teal-50    border-teal-200',   'text' => 'text-teal-700',     'avatar' => 'from-teal-400   to-teal-600'],
+                ['bg' => 'bg-cyan-50    border-cyan-200',   'text' => 'text-cyan-700',     'avatar' => 'from-cyan-400   to-cyan-600'],
+                ['bg' => 'bg-rose-50    border-rose-200',   'text' => 'text-rose-600',     'avatar' => 'from-rose-400   to-rose-600'],
+                ['bg' => 'bg-yellow-50  border-yellow-200', 'text' => 'text-yellow-700',   'avatar' => 'from-yellow-400 to-yellow-600'],
+            ];
+            $catCount = count($categories);
+        @endphp
+
         <div class="text-center mb-14">
             <span class="reveal inline-block text-crimson-500 font-semibold text-sm uppercase tracking-widest mb-3">All Services</span>
             <h2 class="reveal font-display text-4xl sm:text-5xl font-bold text-gray-900" data-delay="100">
@@ -337,10 +355,37 @@
                 <span class="gradient-text">All in One Place</span>
             </h2>
             <p class="reveal text-gray-500 mt-4 max-w-xl mx-auto" data-delay="200">
-                Browse 20+ categories of verified event professionals for Indian weddings and ceremonies.
+                Browse {{ $catCount > 0 ? $catCount.'+' : '20+' }} categories of verified event professionals for Indian weddings and ceremonies.
             </p>
         </div>
 
+        @if(!empty($categories))
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+            @foreach($categories as $cat)
+            @php
+                $p       = $palette[$loop->index % count($palette)];
+                $name    = $cat['label'] ?? $cat['name'] ?? 'Service';
+                $icon    = $cat['icon'] ?? null;
+                $initial = mb_strtoupper(mb_substr($name, 0, 1));
+            @endphp
+            <a href="{{ isset($cat['key']) ? route('service.page', $cat['key']) : '#categories' }}"
+               class="category-card reveal rounded-2xl border-2 {{ $p['bg'] }} p-5 block"
+               data-delay="{{ ($loop->index % 4) * 80 }}">
+                @if($icon)
+                <div class="text-4xl mb-3">{{ $icon }}</div>
+                @else
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br {{ $p['avatar'] }} flex items-center justify-center mb-3">
+                    <span class="text-white font-bold text-lg">{{ $initial }}</span>
+                </div>
+                @endif
+                <h3 class="font-bold text-gray-900 text-base mb-1">{{ $name }}</h3>
+                <div class="{{ $p['text'] }} text-xs font-semibold mt-3 flex items-center gap-1">
+                    Book Now <span>→</span>
+                </div>
+            </a>
+            @endforeach
+        </div>
+        @else
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
             @foreach([
                 ['📸','Photographer',    'bg-orange-50  border-orange-200', 'text-orange-600','Capture every precious moment'],
@@ -367,6 +412,7 @@
             </div>
             @endforeach
         </div>
+        @endif
     </div>
 </section>
 
@@ -699,6 +745,14 @@
             <div>
                 <h4 class="font-semibold text-base mb-5">Our Services</h4>
                 <ul class="space-y-3">
+                    @forelse($categories as $svc)
+                    <li>
+                        <a href="{{ isset($svc['key']) ? route('service.page', $svc['key']) : '#categories' }}"
+                           class="text-gray-400 hover:text-saffron-400 text-sm transition-colors flex items-center gap-1.5">
+                            <span class="w-1 h-1 rounded-full bg-crimson-500/50 shrink-0"></span>{{ $svc['label'] ?? $svc['name'] ?? '' }}
+                        </a>
+                    </li>
+                    @empty
                     @foreach(['Photographer','Videographer','Makeup Artist','Caterer','Mandap Designer','Priest / Pandit','Florist','Decorator'] as $svc)
                     <li>
                         <a href="#categories" class="text-gray-400 hover:text-saffron-400 text-sm transition-colors flex items-center gap-1.5">
@@ -706,6 +760,7 @@
                         </a>
                     </li>
                     @endforeach
+                    @endforelse
                 </ul>
             </div>
 
