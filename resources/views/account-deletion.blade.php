@@ -95,8 +95,6 @@
                     <tbody class="divide-y divide-gray-50">
                         @foreach([
                             ['Account & profile info (name, email, phone, photos)',   'deleted', 'Immediately on request'],
-                            ['Matrimonial profile & partner preferences',              'deleted', 'Immediately on request'],
-                            ['Messages & interests sent / received',                   'deleted', 'Immediately on request'],
                             ['Vendor inquiry history',                                 'deleted', 'Immediately on request'],
                             ['Audit & transaction logs (legal compliance)',            'kept',    'Up to 3 years (legal obligation)'],
                             ['Anonymised analytics data',                              'kept',    'No personal identifiers kept'],
