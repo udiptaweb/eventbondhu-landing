@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountDeletionController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AnalyticsController;
@@ -19,6 +20,12 @@ Route::get('/{page}', [ContentPageController::class, 'show'])
 
 // ── Individual service pages (SEO) ───────────────────────
 Route::get('/services/{key}', [ServicePageController::class, 'show'])->name('service.page');
+
+// ── Account deletion ─────────────────────────────────────
+Route::get('/account-deletion', [AccountDeletionController::class, 'show'])->name('account-deletion.show');
+Route::post('/account-deletion/request', [AccountDeletionController::class, 'submit'])
+    ->name('account-deletion.submit')
+    ->middleware('throttle:5,60');
 
 // ── Admin panel ──────────────────────────────────────────
 Route::prefix('admin')->name('admin.')->group(function () {
