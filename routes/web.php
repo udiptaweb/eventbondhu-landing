@@ -7,6 +7,7 @@ use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\ContentPageController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ServicePageController;
+use App\Http\Controllers\VendorProfileController;
 use Illuminate\Support\Facades\Route;
 
 // ── Public landing page ──────────────────────────────────
@@ -26,6 +27,11 @@ Route::get('/account-deletion', [AccountDeletionController::class, 'show'])->nam
 Route::post('/account-deletion/request', [AccountDeletionController::class, 'submit'])
     ->name('account-deletion.submit')
     ->middleware('throttle:5,60');
+
+// ── Vendor public profile pages ──────────────────────────
+Route::get('/{username}', [VendorProfileController::class, 'show'])
+    ->where('username', '[a-zA-Z0-9]{1,10}')
+    ->name('vendor.profile');
 
 // ── Admin panel ──────────────────────────────────────────
 Route::prefix('admin')->name('admin.')->group(function () {
