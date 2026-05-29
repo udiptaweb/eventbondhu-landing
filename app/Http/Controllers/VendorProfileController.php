@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Log;
 
 class VendorProfileController extends Controller
 {
-    private const API_BASE = 'https://biya.micromlm.in';
+    private const API_BASE = 'https://biya.micromlm.in/api';
 
     public function show(string $username)
     {
