@@ -15,7 +15,7 @@ Route::get('/', [LandingController::class, 'index'])->name('home');
 Route::post('/track/click', [AnalyticsController::class, 'trackClick'])->name('track.click');
 
 // ── Static content pages (fetched from API) ──────────────
-Route::get('/{page}', [ContentPageController::class, 'show'])
+Route::get('/p/{page}', [ContentPageController::class, 'show'])
     ->where('page', 'terms-conditions|privacy-policy|about|contact-support')
     ->name('content.page');
 
