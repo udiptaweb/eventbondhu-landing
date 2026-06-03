@@ -743,11 +743,39 @@
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             @foreach($packages as $idx => $pkg)
-            <div class="rounded-2xl overflow-hidden shadow-sm reveal"
+            @php
+                $pkg_type  = $pkg['type'] ?? 'service';
+                $pkg_image = $pkg['image'] ?? null;
+                $is_product = $pkg_type === 'product';
+            @endphp
+            <div class="rounded-2xl overflow-hidden shadow-sm reveal flex flex-col"
                  style="background:{{ $t['pkg_bg'] }}; border:1px solid {{ $t['card_bdr'] }}; animation-delay:{{ $idx * 80 }}ms">
-                {{-- Header band --}}
+
+                {{-- Package image (if present) --}}
+                @if($pkg_image)
+                <div class="relative w-full aspect-video overflow-hidden">
+                    <img src="{{ $pkg_image }}" alt="{{ $pkg['name'] }}"
+                         loading="lazy" class="w-full h-full object-cover">
+                    {{-- Type badge over image --}}
+                    <span class="absolute top-2 left-2 text-xs font-semibold px-2.5 py-1 rounded-full capitalize"
+                          style="background:{{ $t['badge_bg'] }}; color:{{ $t['badge_color'] }}; border:1px solid {{ $t['badge_bdr'] }}; backdrop-filter:blur(4px)">
+                        {{ $pkg_type }}
+                    </span>
+                </div>
+                @else
+                {{-- Coloured header band with type badge when no image --}}
                 <div class="h-1.5" style="background:{{ $t['btn_grad'] }}"></div>
-                <div class="p-5">
+                @endif
+
+                <div class="p-5 flex flex-col flex-1">
+                    {{-- Type badge (no image case) --}}
+                    @if(!$pkg_image)
+                    <span class="inline-flex self-start text-xs font-semibold px-2.5 py-0.5 rounded-full capitalize mb-2"
+                          style="background:{{ $t['badge_bg'] }}; color:{{ $t['badge_color'] }}; border:1px solid {{ $t['badge_bdr'] }}">
+                        {{ $pkg_type }}
+                    </span>
+                    @endif
+
                     <div class="flex items-start justify-between gap-3 mb-3">
                         <h3 class="font-bold text-lg leading-snug" style="color:{{ $t['card_text'] }}">
                             {{ $pkg['name'] }}
@@ -785,9 +813,9 @@
                     @endif
 
                     <a href="{{ $play_store_url }}" data-track="android"
-                       class="block w-full text-center py-2.5 rounded-xl text-sm font-semibold transition-all hover:opacity-90 hover:scale-[1.02]"
+                       class="block w-full text-center py-2.5 rounded-xl text-sm font-semibold transition-all hover:opacity-90 hover:scale-[1.02] mt-auto"
                        style="background:{{ $t['btn_grad'] }}; color:{{ $t['btn_color'] }}">
-                        Book on App
+                        {{ $is_product ? 'Order on App' : 'Book on App' }}
                     </a>
                 </div>
             </div>
