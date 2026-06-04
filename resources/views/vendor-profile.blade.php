@@ -396,7 +396,7 @@
 @endsection
 
 @section('content')
-<div style="background:{{ $t['body_bg'] }}; min-height:100vh;">
+<div style="background:{{ $t['body_bg'] }}; min-height:100vh; overflow-x:hidden;">
 
 {{-- ══ NAV ════════════════════════════════════════════════ --}}
 <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
@@ -435,21 +435,21 @@
     @else
         <div class="absolute inset-0" style="background:{{ $t['gradient'] }}"></div>
         {{-- decorative blobs --}}
-        <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-20 blur-3xl"
+        <div class="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 rounded-full opacity-20 blur-3xl translate-x-1/3 -translate-y-1/4"
              style="background:{{ $t['accent'] }}"></div>
-        <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full opacity-15 blur-3xl"
+        <div class="absolute bottom-0 left-0 w-56 h-56 sm:w-80 sm:h-80 rounded-full opacity-15 blur-3xl -translate-x-1/3 translate-y-1/4"
              style="background:{{ $t['accent'] }}"></div>
     @endif
 
     {{-- Breadcrumb --}}
     <div class="relative z-10 pt-8 px-4 sm:px-6">
         <div class="max-w-5xl mx-auto">
-            <nav class="flex items-center gap-2 text-xs" style="color:{{ $t['hero_sub'] }}">
-                <a href="{{ route('home') }}" class="hover:opacity-100 opacity-75 transition-opacity">Home</a>
-                <span class="opacity-50">/</span>
-                <a href="{{ route('service.page', $cat_key) }}" class="hover:opacity-100 opacity-75 transition-opacity">{{ $cat_label }}</a>
-                <span class="opacity-50">/</span>
-                <span class="opacity-75">{{ $username }}</span>
+            <nav class="flex items-center gap-1.5 text-xs flex-wrap" style="color:{{ $t['hero_sub'] }}">
+                <a href="{{ route('home') }}" class="hover:opacity-100 opacity-75 transition-opacity shrink-0">Home</a>
+                <span class="opacity-50 shrink-0">/</span>
+                <a href="{{ route('service.page', $cat_key) }}" class="hover:opacity-100 opacity-75 transition-opacity truncate max-w-30">{{ $cat_label }}</a>
+                <span class="opacity-50 shrink-0">/</span>
+                <span class="opacity-75 truncate max-w-25">{{ $username }}</span>
             </nav>
         </div>
     </div>
@@ -505,13 +505,13 @@
                 </div>
 
                 {{-- Business name --}}
-                <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-1"
+                <h1 class="font-display text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-1 wrap-break-word"
                     style="color:{{ $t['hero_text'] }}">
                     {{ $business }}
                 </h1>
 
                 @if($owner && $owner !== $business)
-                <p class="text-sm sm:text-base mb-3" style="color:{{ $t['hero_sub'] }}">
+                <p class="text-sm sm:text-base mb-3 wrap-break-word" style="color:{{ $t['hero_sub'] }}">
                     by {{ $owner }}
                 </p>
                 @endif
@@ -613,15 +613,15 @@
 
             {{-- Description --}}
             <div class="sm:col-span-2 reveal">
-                <h2 class="font-display text-2xl sm:text-3xl font-bold mb-4" style="{{ $t['ttl_cls'] }}">
+                <h2 class="font-display text-2xl sm:text-3xl font-bold mb-4 wrap-break-word" style="{{ $t['ttl_cls'] }}">
                     About {{ $business }}
                 </h2>
                 @if($description)
-                <p class="leading-relaxed text-base" style="color:{{ $t['dark'] ? $t['card_text'] : '#374151' }}" id="about-text">
+                <p class="leading-relaxed text-base wrap-break-word" style="color:{{ $t['dark'] ? $t['card_text'] : '#374151' }}" id="about-text">
                     {{ $description }}
                 </p>
                 @else
-                <p class="leading-relaxed text-base opacity-60" style="color:{{ $t['dark'] ? $t['card_text'] : '#374151' }}">
+                <p class="leading-relaxed text-base opacity-60 wrap-break-word" style="color:{{ $t['dark'] ? $t['card_text'] : '#374151' }}">
                     Trusted {{ $cat_label }} available for your special occasions.
                 </p>
                 @endif
@@ -654,7 +654,7 @@
                 @if($address)
                 <div class="rounded-xl p-4" style="background:{{ $t['card_bg'] }}; border:1px solid {{ $t['card_bdr'] }}">
                     <p class="text-xs font-semibold uppercase tracking-widest mb-1" style="color:{{ $t['card_muted'] }}">Address</p>
-                    <p class="text-sm leading-snug" style="color:{{ $t['card_text'] }}">{{ $address }}</p>
+                    <p class="text-sm leading-snug wrap-break-word" style="color:{{ $t['card_text'] }}">{{ $address }}</p>
                 </div>
                 @endif
                 @if($website)
@@ -735,7 +735,7 @@
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-8 reveal">
             <h2 class="font-display text-2xl sm:text-3xl font-bold mb-2" style="{{ $t['ttl_cls'] }}">
-                {{ $t['pkg_title'] }}
+                Packages / Products
             </h2>
             <p class="text-sm" style="color:{{ $t['dark'] ? $t['card_muted'] : '#6b7280' }}">
                 Choose a package that fits your celebration
@@ -744,9 +744,11 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             @foreach($packages as $idx => $pkg)
             @php
-                $pkg_type  = $pkg['type'] ?? 'service';
-                $pkg_image = $pkg['image'] ?? null;
+                $pkg_type   = $pkg['type'] ?? 'service';
+                $pkg_image  = $pkg['image'] ?? null;
                 $is_product = $pkg_type === 'product';
+                $type_label = $is_product ? 'Product' : 'Service';
+                $type_icon  = $is_product ? '📦' : '🛎️';
             @endphp
             <div class="rounded-2xl overflow-hidden shadow-sm reveal flex flex-col"
                  style="background:{{ $t['pkg_bg'] }}; border:1px solid {{ $t['card_bdr'] }}; animation-delay:{{ $idx * 80 }}ms">
@@ -757,9 +759,9 @@
                     <img src="{{ $pkg_image }}" alt="{{ $pkg['name'] }}"
                          loading="lazy" class="w-full h-full object-cover">
                     {{-- Type badge over image --}}
-                    <span class="absolute top-2 left-2 text-xs font-semibold px-2.5 py-1 rounded-full capitalize"
+                    <span class="absolute top-2 left-2 inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full"
                           style="background:{{ $t['badge_bg'] }}; color:{{ $t['badge_color'] }}; border:1px solid {{ $t['badge_bdr'] }}; backdrop-filter:blur(4px)">
-                        {{ $pkg_type }}
+                        {{ $type_icon }} {{ $type_label }}
                     </span>
                 </div>
                 @else
@@ -770,9 +772,9 @@
                 <div class="p-5 flex flex-col flex-1">
                     {{-- Type badge (no image case) --}}
                     @if(!$pkg_image)
-                    <span class="inline-flex self-start text-xs font-semibold px-2.5 py-0.5 rounded-full capitalize mb-2"
+                    <span class="inline-flex items-center gap-1 self-start text-xs font-semibold px-2.5 py-0.5 rounded-full mb-2"
                           style="background:{{ $t['badge_bg'] }}; color:{{ $t['badge_color'] }}; border:1px solid {{ $t['badge_bdr'] }}">
-                        {{ $pkg_type }}
+                        {{ $type_icon }} {{ $type_label }}
                     </span>
                     @endif
 
@@ -830,13 +832,13 @@
 <section class="py-14 sm:py-16 relative overflow-hidden"
          style="background:linear-gradient(135deg,#2d0a1e 0%,#7b1035 30%,#c41e3a 60%,#ff6b35 85%,#f5a623 100%)">
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
-        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-white/5 blur-3xl"></div>
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-white/5 blur-3xl"></div>
         <div class="absolute top-6 right-8 w-4 h-4 rounded-full bg-yellow-300/50 animate-float"></div>
         <div class="absolute bottom-8 left-12 w-3 h-3 rounded-full bg-white/30 animate-float2"></div>
     </div>
 
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center text-white reveal">
-        <div class="inline-flex items-center gap-2 glass rounded-full px-5 py-2 text-sm mb-4">
+        <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-xs sm:text-sm mb-4 flex-wrap justify-center">
             <span class="text-yellow-300">📱</span>
             Free Download · No Subscription
         </div>
@@ -847,9 +849,9 @@
         <p class="text-white/75 mb-6 max-w-xl mx-auto text-sm sm:text-base">
             {{ $t['cta_txt'] }}
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div class="flex flex-col gap-4 justify-center items-center px-4 sm:px-0">
             <a href="{{ $play_store_url }}"
-               class="btn-download inline-flex items-center gap-3 bg-white text-gray-900 px-7 py-3.5 rounded-2xl font-semibold shadow-2xl hover:shadow-white/20 hover:scale-105 transition-all duration-300"
+               class="btn-download inline-flex items-center gap-3 bg-white text-gray-900 px-5 sm:px-7 py-3.5 rounded-2xl font-semibold shadow-2xl hover:shadow-white/20 hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center"
                data-track="android">
                 <svg class="w-7 h-7 shrink-0" viewBox="0 0 24 24">
                     <path fill="#00c853" d="M3.18 23.76c.33.18.7.18 1.06-.01l12.45-7.19-2.89-2.89z"/>
@@ -930,7 +932,7 @@
                 </div>
 
                 @if($rev['review_text'])
-                <p class="text-sm leading-relaxed" style="color:{{ $t['card_muted'] }}">
+                <p class="text-sm leading-relaxed wrap-break-word" style="color:{{ $t['card_muted'] }}">
                     "{{ $rev['review_text'] }}"
                 </p>
                 @endif
