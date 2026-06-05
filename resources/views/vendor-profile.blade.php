@@ -40,6 +40,9 @@
             'body_bg'    => '#f9f8ff',
             'section_bg' => '#0f0f1a',
             'dark'       => true,
+            'body_dark'  => false,
+            'body_text'  => '#1c1c2e',
+            'body_muted' => '#6b7280',
             'badge_bg'   => 'rgba(245,158,11,.15)',
             'badge_color'=> '#F59E0B',
             'badge_bdr'  => 'rgba(245,158,11,.3)',
@@ -64,6 +67,9 @@
             'body_bg'    => '#f0f4ff',
             'section_bg' => '#0a0f1e',
             'dark'       => true,
+            'body_dark'  => false,
+            'body_text'  => '#0d1b2a',
+            'body_muted' => '#6b7280',
             'badge_bg'   => 'rgba(96,165,250,.15)',
             'badge_color'=> '#60A5FA',
             'badge_bdr'  => 'rgba(96,165,250,.3)',
@@ -88,6 +94,9 @@
             'body_bg'    => '#fff0f3',
             'section_bg' => '#fff5f7',
             'dark'       => false,
+            'body_dark'  => false,
+            'body_text'  => '#1f2937',
+            'body_muted' => '#6b7280',
             'badge_bg'   => 'rgba(233,30,99,.1)',
             'badge_color'=> '#E91E63',
             'badge_bdr'  => 'rgba(233,30,99,.25)',
@@ -112,6 +121,9 @@
             'body_bg'    => '#fdf4ff',
             'section_bg' => '#faf5ff',
             'dark'       => false,
+            'body_dark'  => false,
+            'body_text'  => '#1f2937',
+            'body_muted' => '#6b7280',
             'badge_bg'   => 'rgba(147,51,234,.1)',
             'badge_color'=> '#9333EA',
             'badge_bdr'  => 'rgba(147,51,234,.25)',
@@ -136,6 +148,9 @@
             'body_bg'    => '#fdf9ff',
             'section_bg' => '#faf5ff',
             'dark'       => false,
+            'body_dark'  => false,
+            'body_text'  => '#1f2937',
+            'body_muted' => '#6b7280',
             'badge_bg'   => 'rgba(255,179,0,.15)',
             'badge_color'=> '#E65100',
             'badge_bdr'  => 'rgba(255,152,0,.35)',
@@ -160,6 +175,9 @@
             'body_bg'    => '#fffbf5',
             'section_bg' => '#fff7ed',
             'dark'       => false,
+            'body_dark'  => false,
+            'body_text'  => '#1f2937',
+            'body_muted' => '#6b7280',
             'badge_bg'   => 'rgba(22,163,74,.1)',
             'badge_color'=> '#16A34A',
             'badge_bdr'  => 'rgba(22,163,74,.25)',
@@ -184,6 +202,9 @@
             'body_bg'    => '#fefce8',
             'section_bg' => '#fffbeb',
             'dark'       => false,
+            'body_dark'  => false,
+            'body_text'  => '#1f2937',
+            'body_muted' => '#6b7280',
             'badge_bg'   => 'rgba(217,119,6,.12)',
             'badge_color'=> '#D97706',
             'badge_bdr'  => 'rgba(217,119,6,.3)',
@@ -208,6 +229,9 @@
             'body_bg'    => '#f7fff9',
             'section_bg' => '#f0fdf4',
             'dark'       => false,
+            'body_dark'  => false,
+            'body_text'  => '#1f2937',
+            'body_muted' => '#6b7280',
             'badge_bg'   => 'rgba(22,163,74,.1)',
             'badge_color'=> '#16A34A',
             'badge_bdr'  => 'rgba(22,163,74,.25)',
@@ -232,6 +256,9 @@
             'body_bg'    => '#0d0d1a',
             'section_bg' => '#0f0f1e',
             'dark'       => true,
+            'body_dark'  => true,
+            'body_text'  => '#e5e5f7',
+            'body_muted' => 'rgba(229,229,247,0.6)',
             'badge_bg'   => 'rgba(167,139,250,.15)',
             'badge_color'=> '#A78BFA',
             'badge_bdr'  => 'rgba(167,139,250,.3)',
@@ -256,6 +283,9 @@
             'body_bg'    => '#fdf9ff',
             'section_bg' => '#faf5ff',
             'dark'       => false,
+            'body_dark'  => false,
+            'body_text'  => '#1f2937',
+            'body_muted' => '#6b7280',
             'badge_bg'   => 'rgba(245,158,11,.15)',
             'badge_color'=> '#D97706',
             'badge_bdr'  => 'rgba(245,158,11,.35)',
@@ -280,6 +310,9 @@
             'body_bg'    => '#f0f9ff',
             'section_bg' => '#0f1729',
             'dark'       => true,
+            'body_dark'  => false,
+            'body_text'  => '#0c1445',
+            'body_muted' => '#6b7280',
             'badge_bg'   => 'rgba(14,165,233,.12)',
             'badge_color'=> '#0EA5E9',
             'badge_bdr'  => 'rgba(14,165,233,.3)',
@@ -304,6 +337,9 @@
             'body_bg'    => '#1a0505',
             'section_bg' => '#0f0505',
             'dark'       => true,
+            'body_dark'  => true,
+            'body_text'  => '#fef2f2',
+            'body_muted' => 'rgba(254,242,242,0.6)',
             'badge_bg'   => 'rgba(251,146,60,.15)',
             'badge_color'=> '#FB923C',
             'badge_bdr'  => 'rgba(251,146,60,.3)',
@@ -330,6 +366,9 @@
         'body_bg'    => '#fff8f3',
         'section_bg' => '#fff3ea',
         'dark'       => false,
+        'body_dark'  => false,
+        'body_text'  => '#1f2937',
+        'body_muted' => '#6b7280',
         'badge_bg'   => 'rgba(245,166,35,.15)',
         'badge_color'=> '#c41e3a',
         'badge_bdr'  => 'rgba(196,30,58,.3)',
@@ -617,18 +656,18 @@
                     About {{ $business }}
                 </h2>
                 @if($description)
-                <p class="leading-relaxed text-base wrap-break-word" style="color:{{ $t['dark'] ? $t['card_text'] : '#374151' }}" id="about-text">
+                <p class="leading-relaxed text-base wrap-break-word" style="color:{{ $t['body_text'] }}" id="about-text">
                     {{ $description }}
                 </p>
                 @else
-                <p class="leading-relaxed text-base opacity-60 wrap-break-word" style="color:{{ $t['dark'] ? $t['card_text'] : '#374151' }}">
+                <p class="leading-relaxed text-base opacity-60 wrap-break-word" style="color:{{ $t['body_text'] }}">
                     Trusted {{ $cat_label }} available for your special occasions.
                 </p>
                 @endif
 
                 @if(count($service_areas) > 0)
                 <div class="mt-5">
-                    <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color:{{ $t['dark'] ? $t['card_muted'] : '#9ca3af' }}">
+                    <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color:{{ $t['body_muted'] }}">
                         Serves In
                     </p>
                     <div class="flex flex-wrap gap-2">
@@ -737,7 +776,7 @@
             <h2 class="font-display text-2xl sm:text-3xl font-bold mb-2" style="{{ $t['ttl_cls'] }}">
                 Packages / Products
             </h2>
-            <p class="text-sm" style="color:{{ $t['dark'] ? $t['card_muted'] : '#6b7280' }}">
+            <p class="text-sm" style="color:{{ $t['body_muted'] }}">
                 Choose a package that fits your celebration
             </p>
         </div>
@@ -889,7 +928,7 @@
                         <span class="absolute inset-0 overflow-hidden" style="width:{{ ($rating / 5) * 100 }}%; color:#FBBF24">★★★★★</span>
                     </div>
                     <span class="font-bold text-lg" style="{{ $t['ttl_cls'] }}">{{ number_format($rating, 1) }}</span>
-                    <span class="text-sm" style="color:{{ $t['dark'] ? $t['card_muted'] : '#9ca3af' }}">based on {{ $total_rev }} reviews</span>
+                    <span class="text-sm" style="color:{{ $t['body_muted'] }}">based on {{ $total_rev }} reviews</span>
                 </div>
                 @endif
             </div>
@@ -919,7 +958,7 @@
                         </p>
                         <div class="flex items-center gap-1 mt-0.5">
                             @for($s = 1; $s <= 5; $s++)
-                            <svg class="w-3.5 h-3.5" fill="{{ $s <= $rev['rating'] ? '#FBBF24' : ($dark ? '#374151' : '#e5e7eb') }}"
+                            <svg class="w-3.5 h-3.5" fill="{{ $s <= $rev['rating'] ? '#FBBF24' : ($t['dark'] ? '#374151' : '#e5e7eb') }}"
                                  viewBox="0 0 20 20">
                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                             </svg>
@@ -959,7 +998,7 @@
             <h2 class="font-display text-2xl sm:text-3xl font-bold mb-2" style="{{ $t['ttl_cls'] }}">
                 Book {{ \Illuminate\Support\Str::limit($business, 25) }}
             </h2>
-            <p class="text-sm" style="color:{{ $t['dark'] ? $t['card_muted'] : '#6b7280' }}">
+            <p class="text-sm" style="color:{{ $t['body_muted'] }}">
                 Download the Event Bondhu app to book securely
             </p>
         </div>
@@ -997,15 +1036,15 @@
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
             <a href="{{ route('home') }}">
                 <img src="{{ asset('logo.png') }}" alt="Event Bondhu" class="h-8 w-auto"
-                     style="{{ $dark ? 'filter:brightness(0) invert(1)' : '' }}">
+                     style="{{ $t['body_dark'] ? 'filter:brightness(0) invert(1)' : '' }}">
             </a>
-            <nav class="flex flex-wrap justify-center gap-4 text-xs" style="color:{{ $t['dark'] ? $t['card_muted'] : '#9ca3af' }}">
+            <nav class="flex flex-wrap justify-center gap-4 text-xs" style="color:{{ $t['body_muted'] }}">
                 <a href="{{ route('home') }}" class="hover:opacity-100 opacity-70 transition-opacity">Home</a>
                 <a href="{{ route('service.page', $cat_key) }}" class="hover:opacity-100 opacity-70 transition-opacity">All {{ $cat_label }}s</a>
                 <a href="{{ route('content.page', 'privacy-policy') }}" class="hover:opacity-100 opacity-70 transition-opacity">Privacy</a>
                 <a href="{{ route('content.page', 'terms-conditions') }}" class="hover:opacity-100 opacity-70 transition-opacity">Terms</a>
             </nav>
-            <p class="text-xs opacity-40" style="color:{{ $t['dark'] ? $t['card_text'] : '#374151' }}">
+            <p class="text-xs opacity-40" style="color:{{ $t['body_text'] }}">
                 &copy; {{ date('Y') }} Event Bondhu
             </p>
         </div>
