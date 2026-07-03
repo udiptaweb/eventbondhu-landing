@@ -99,7 +99,8 @@
 
                 {{-- CTA buttons --}}
                 <div class="flex flex-wrap gap-4 pt-2">
-                    <a href="#"
+                    <a href="https://play.google.com/store/apps/details?id=com.eventbondhuap.app"
+                       target="_blank" rel="noopener"
                        class="btn-download group flex items-center gap-3 bg-white text-gray-900 px-6 py-3.5 rounded-2xl font-semibold shadow-2xl hover:shadow-white/20 hover:scale-105 transition-all duration-300"
                        data-track="android">
                         <svg class="w-7 h-7 shrink-0" viewBox="0 0 24 24">
@@ -642,7 +643,8 @@
             </p>
 
             <div class="flex flex-col sm:flex-row gap-5 justify-center pt-4">
-                <a href="#"
+                <a href="https://play.google.com/store/apps/details?id=com.eventbondhuap.app"
+                   target="_blank" rel="noopener"
                    class="btn-download group flex items-center gap-4 bg-white text-gray-900 px-8 py-4 rounded-2xl font-semibold shadow-2xl hover:shadow-white/20 hover:scale-105 transition-all duration-300 justify-center"
                    data-track="android">
                     <svg class="w-8 h-8 shrink-0" viewBox="0 0 24 24">

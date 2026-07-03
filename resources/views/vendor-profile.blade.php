@@ -395,7 +395,7 @@
     $stars_half  = (($rating - floor($rating)) >= 0.4) ? 1 : 0;
     $stars_empty = max(0, 5 - $stars_full - $stars_half);
 
-    $play_store_url = route('home') . '#download';
+    $play_store_url = 'https://play.google.com/store/apps/details?id=com.eventbondhuap.app';
     $whatsapp_url   = $whatsapp ? 'https://wa.me/' . preg_replace('/[^0-9]/', '', $whatsapp) : null;
 
     $schema_type = match($cat_key) {

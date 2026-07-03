@@ -227,7 +227,7 @@
         <p class="text-white/70 text-lg mb-10">
             Download Event Bondhu now and find the perfect {{ $label }} for your special occasion.
         </p>
-        <a href="https://play.google.com/store/apps/details?id=com.eventbondhu"
+        <a href="https://play.google.com/store/apps/details?id=com.eventbondhuap.app"
            target="_blank" rel="noopener"
            data-platform="android"
            class="btn-download inline-flex items-center gap-3 bg-white text-gray-900 font-bold text-base px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition-transform">
